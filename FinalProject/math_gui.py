@@ -4,7 +4,6 @@ Author: Jonathan Neff
 Last date modified: 10/27/2023
 
 The purpose of this program is provide the user interface for the math game
-# comment to test commit
 """
 
 import tkinter
@@ -49,7 +48,8 @@ class MathGame:
         welcome_label.grid(columnspan=self.COLUMN_SPAN, row=row)
 
         # temporary until classes are set up
-        math_test = [ "1", "2", "3"]
+        # math_test = [ "1", "2", "3"]
+        math_test = self.math_class.math_queue.dequeue
         math_operation = "+"
 
         row += 1
