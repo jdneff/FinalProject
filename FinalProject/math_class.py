@@ -13,8 +13,11 @@ class MathClass:
 
     def __init__(self):
         self.math_queue = math_queue.MathQueue()
+        self.math_answers = math_answers.MathAnswers()
         self.math_operation = "+"
         self.current_problem = [];
+        self.NUMBER_OF_QUESTIONS = 1
+        self.questions_asked = 0
         self.reset_the_game
         return
 
@@ -30,11 +33,17 @@ class MathClass:
         return
 
     def get_problem(self):
-        self.current_problem = math_queue.dequeue()
+        self.current_problem = self.math_queue.dequeue()
         return self.current_problem
 
     def submit_answer(self, answer):
-        math_answers.add(self.current_problem, answer, self.math_operation)
+        self.questions_asked = self.questions_asked + 1
+        is_correct = 0
+        if self.current_problem[0] + self.current_problem[1] == answer:
+            is_correct = 1
+        self.math_answers.add(self.current_problem, answer, self.math_operation, is_correct)
+        # return true/false
+        return is_correct == 1
 
     def __str__(self):
         return "Row: " + str(self.label_row) + " Column: " + str(self.label_column)

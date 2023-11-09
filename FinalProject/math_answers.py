@@ -8,13 +8,11 @@ This class is a priority queue
 """
 class PriorityQueueItem:
 
-    def __init__(self, problem, answer ):
+    def __init__(self, problem, answer, operation, is_correct ):
         self.problem = problem
+        self.operation = operation
         self.answer = answer
-        #if problem[0] ? problem[1] == answer:
-        #   self.correct = 1
-        #else:
-        #    self.correct = 0
+        self.is_correct = is_correct
 
 class MathAnswers:
 
@@ -24,18 +22,19 @@ class MathAnswers:
     def is_empty(self):
        return len(self.items) == 0;
 
-    def is_full(self):
-        # linked based queue is never full
-        return false
-
-    def add(self, problem, answer, operation):
-        newItem = PriorityQueueItem(problem, answer)
-        if self.items.is_empty():
-            self.items.append(item)
+    def add(self, problem, answer, operation, is_correct):
+        newItem = PriorityQueueItem(problem, answer, operation, is_correct)
+        if self.is_empty():
+            self.items.append(newItem)
         else:
-            return
-            #compareNode = self.items[0]
-            #while newItem.
+            for x in range(len(self.items)):
+                item = self.items[x]
+                if newItem.is_correct > item.is_correct:
+                    # insert in order
+                    self.items.insert(x, newItem)
+                    return
+            # add at the end
+            self.items.insert(x, newItem)
 
     def remove(self):
         if self.is_empty():
