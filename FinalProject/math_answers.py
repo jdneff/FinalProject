@@ -1,7 +1,7 @@
 """
 Program: math_answers.py
 Author: Jonathan Neff
-Last date modified: 11/3/2023
+Last date modified: 11/10/2023
 
 The purpose of this class is to store the math answers submitted
 This class is a priority queue
@@ -34,7 +34,7 @@ class MathAnswers:
                     self.items.insert(x, newItem)
                     return
             # add at the end
-            self.items.insert(x, newItem)
+            self.items.append(newItem)
 
     def remove(self):
         if self.is_empty():

@@ -1,7 +1,7 @@
 """
 Program: math_queue.py
 Author: Jonathan Neff
-Last date modified: 11/3/2023
+Last date modified: 11/10/2023
 
 The purpose of this class is to manage the math problems that will be asked
 """
@@ -40,7 +40,6 @@ class MathQueue:
     def randomize(self):
         self.customSort()
         return
-
 
     def customSort(self):
         x = 0
