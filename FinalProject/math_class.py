@@ -1,7 +1,7 @@
 """
 Program: math_class.py
 Author: Jonathan Neff
-Last date modified: 11/10/2023
+Last date modified: 11/17/2023
 
 The purpose of this class to handle the math data
 """

@@ -1,7 +1,7 @@
 """
 Program: math_gui.py
 Author: Jonathan Neff
-Last date modified: 11/10/2023
+Last date modified: 11/17/2023
 
 The purpose of this program is provide the user interface for the math game
 """
