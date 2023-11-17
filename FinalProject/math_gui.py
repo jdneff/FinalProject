@@ -37,7 +37,7 @@ class MathGame:
             self.is_correct_label.configure(fg="red")
 
         self.math_answer.config(state="readonly")
-        if self.math_class.questions_asked == self.math_class.number_of_questions:
+        if self.math_class._questions_asked == self.math_class._number_of_questions:
             self.submit_button.config(text="View Results", command=self.view_results)
         else:
             self.submit_button.config(text="Next Question", command=self.next_question)
@@ -49,7 +49,7 @@ class MathGame:
         self.math_answer.delete(0, "end")
         self.is_correct_label.configure(text="")
         math_problem = self.math_class.get_problem()
-        math_operation = self.math_class.math_operation
+        math_operation = self.math_class._math_operation
         math_output = str(math_problem[0]) + " " + math_operation + " " + str(math_problem[1])
         label = self.math_problem
         label.config(text=math_output)
@@ -129,7 +129,7 @@ class MathGame:
         # output the first math problem
         column = column + 1
         math_problem = self.math_class.get_problem()
-        math_operation = self.math_class.math_operation
+        math_operation = self.math_class._math_operation
         math_output = str(math_problem[0]) + " " + math_operation + " " + str(math_problem[1])
         self.math_problem = tkinter.Label(self.m, text=str(math_output))
         self.math_problem.grid(column=column, row=row)
@@ -187,24 +187,24 @@ class MathGame:
         result_label.grid(column=column, row=row)
         result_label.configure(font=("Helvetica", 10, "bold"))
 
-        while self.math_class.math_answers.size() > 0:
+        while self.math_class._math_answers.size() > 0:
             row = row + 1
             column=1
             item = self.math_class.get_next_answer()
 
             # output the math problem
-            problem = str(item.problem[0]) + item.operation + str(item.problem[1])
+            problem = str(item._problem[0]) + item._operation + str(item._problem[1])
             tkinter.Label(self.m, text=problem).grid(column=column, row=row)
             column = column + 1
 
             #output answer
-            tkinter.Label(self.m, text=item.answer).grid(column=column, row=row)
+            tkinter.Label(self.m, text=item._answer).grid(column=column, row=row)
             column = column + 1
 
             # output correct/incorrect
             is_correct = "Incorrect"
             text_color = "red"
-            if item.is_correct:
+            if item._is_correct:
                 is_correct = "Correct!"
                 text_color = "green"
             correct_label = tkinter.Label(self.m, text=is_correct, fg=text_color)

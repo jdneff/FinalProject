@@ -1,2 +1,2 @@
-class QueueEmptyException(Exception):
+class QueueEmptyException(BaseException):
     pass
