@@ -1,7 +1,7 @@
 """
 Program: math_class.py
 Author: Jonathan Neff
-Last date modified: 11/17/2023
+Last date modified: 11/22/2023
 
 The purpose of this class to handle the math data
 """
@@ -11,36 +11,38 @@ import random
 
 class MathClass:
 
+    # constructor
     def __init__(self):
         # math queue to hold question to be answered
-        self._math_queue = None
+        self.math_queue = None
         # math queue to hold the questions and answer submitted
-        self._math_answers = None
+        self.math_answers = None
         # type of math being done
-        self._math_operation = None
+        self.math_operation = None
         # dictionary to translate math operations
-        self._math_operations = { "Addition": "+",
+        self.math_operations = { "Addition": "+",
                                  "Subtraction": "-",
                                  "Multiplication": "X",
                                  "Division": "/" }
         # storage for the current problem being asked
-        self._current_problem = [];
+        self.current_problem = [];
         # number of questions to be asked before end of game
-        self._number_of_questions = 0
+        self.number_of_questions = 0
         # questions asked so far in the game
-        self._questions_asked = 0
+        self.questions_asked = 0
         return
 
+    # start the game, add problems into math queue
     def start_the_game(self, game_mode, number_of_questions):
         """ sets up the game to the default/starting state"""
-        self._questions_asked = 0
+        self.questions_asked = 0
         # build math_queue and math_answers objects
-        self._math_queue = math_queue.MathQueue()
-        self._math_answers = math_answers.MathAnswers()
+        self.math_queue = math_queue.MathQueue()
+        self.math_answers = math_answers.MathAnswers()
         # save the chosen math operation
-        self._math_operation = self._math_operations[game_mode]
+        self.math_operation = self.math_operations[game_mode]
         # save the number of questionst to be asked
-        self._number_of_questions = number_of_questions
+        self.number_of_questions = number_of_questions
 
         # load problems into the math queue
         MAX_INT_ONE = 12
@@ -54,23 +56,23 @@ class MathClass:
                     y = y * z
                 random_number = random.random() * MULTIPLIER
                 problem = [y, z, random_number]
-                self._math_queue.enqueue(problem)
-        self._math_queue.randomize()
+                self.math_queue.enqueue(problem)
+        self.math_queue.randomize()
         return
 
     # get the next math problem from the math queue
     def get_problem(self):
-        self._current_problem = self._math_queue.dequeue()
-        return self._current_problem
+        self.current_problem = self.math_queue.dequeue()
+        return self.current_problem
 
     # submit the answer into the math answers priority que and return true/false
     def submit_answer(self, answer):
-        self._questions_asked = self._questions_asked + 1
-        is_correct = self.check_answer(self._current_problem[0], self._current_problem[1], self._math_operation, answer)
+        self.questions_asked = self.questions_asked + 1
+        is_correct = self.check_answer(self.current_problem[0], self.current_problem[1], self.math_operation, answer)
         correct_num = 0
         if is_correct:
             correct_num = 1
-        self._math_answers.add(self._current_problem, answer, self._math_operation, correct_num)
+        self.math_answers.add(self.current_problem, answer, self.math_operation, correct_num)
         # return true/false
         return is_correct
 
@@ -89,11 +91,12 @@ class MathClass:
 
     # retrieve the answers out of the queue
     def get_next_answer(self):
-        return self._math_answers.remove()
+        return self.math_answers.remove()
 
+    # output math class values in a string and return string
     def print_queue(self):
         output = ""
-        output = output + self._math_operation + str(self._number_of_questions) + str(self._questions_asked)
+        output = output + self.math_operation + str(self.number_of_questions) + str(self.questions_asked)
         return output
 
 

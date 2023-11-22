@@ -1,7 +1,7 @@
 """
 math_queue_answers_tester.py
 Author: Jonathan Neff
-Last date modified: 11/17/2023
+Last date modified: 11/22/2023
 
 The purpose of this class is to test the MathAnswers Class
 """
@@ -49,13 +49,13 @@ class MyTestCase(unittest.TestCase):
         self.math_answers.add(problem3, answer3, operation, is_correct_3)
 
         # test peek
-        self.assertEqual(self.math_answers.peek()._problem, [1, 2, 5])
+        self.assertEqual(self.math_answers.peek().problem, [1, 2, 5])
 
         # test size
         self.assertEqual(self.math_answers.size(), 3)
 
         # test remove
-        removedItem = self.math_answers.remove()._problem
+        removedItem = self.math_answers.remove().problem
         self.assertEqual(removedItem, [1, 2, 5])
         self.assertEqual(self.math_answers.size(), 2)
 

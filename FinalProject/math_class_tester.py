@@ -1,7 +1,7 @@
 """
 math_class_tester.py
 Author: Jonathan Neff
-Last date modified: 11/17/2023
+Last date modified: 11/22/2023
 
 The purpose of this class is to test the MathClass Class
 """
